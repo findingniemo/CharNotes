@@ -19,7 +19,7 @@ public class TestCharacter {
         assertEquals("Mike", testChar.getName());
         assertEquals(0, testChar.getAge());
         assertEquals("", testChar.getBio());
-        assertEquals(0, testChar.getGender());
+        assertEquals("", testChar.getGender());
     }
 
     @Test

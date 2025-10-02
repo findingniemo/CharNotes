@@ -19,41 +19,41 @@ public class Character {
     // MODIFIES: this
     // EFFECTS: sets character name to entered name
     public void setName(String name){
-         //stub
+        this.name = name;
     }
 
     // MODIFIES: this
     // EFFECTS: sets character age to entered age
     public void setAge(int age){
-         //stub
+        this.age = age;
     }
 
     // MODIFIES: this
     // EFFECTS: sets character bio to entered bio
     public void setBio(String bio){
-         //stub
+        this.bio = bio;
     }
 
     // MODIFIES: this
     // EFFECTS: sets character gender to entered gender
     public void setGender(String gender){
-         //stub
+        this.gender = gender;
     }
 
     public String getName(){
-        return null; //stub
+        return name;
     }
 
     public int getAge(){
-        return 0; //stub
+        return age;
     }
 
     public String getBio(){
-        return null; //stub
+        return bio;
     }
 
     public String getGender(){
-        return null; //stub
+        return gender;
     }
 
 }
