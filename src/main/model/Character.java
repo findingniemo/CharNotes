@@ -8,11 +8,10 @@ public class Character {
     private int age;
 
     // EFFECTS: the name of the character is set to the name
-    // entered. The character has no age (represented with -1),
-    // no biograpy and no gender.
+    // entered. The character has age 0, no biograpy and no gender.
     public Character(String name) {
         this.name = name;
-        age = -1;
+        age = 0;
         bio = "";
         gender = "";
     }
