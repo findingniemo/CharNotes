@@ -22,6 +22,7 @@ public class Character {
         this.name = name;
     }
 
+    // REQUIRES: entered age >= 0
     // MODIFIES: this
     // EFFECTS: sets character age to entered age
     public void setAge(int age){
