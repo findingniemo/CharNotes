@@ -1,19 +1,23 @@
 package model;
 
-// Represents a character with a name, age, gender, biography.
+// Represents a character with a name, age, gender, biography and bookmark
+// status.
 public class Character {
     private String name;
     private String gender;
     private String bio;
     private int age;
+    public boolean bmark;
 
     // EFFECTS: the name of the character is set to the name
-    // entered. The character has age 0, no biograpy and no gender.
+    // entered. The character has age 0, no biograpy, no gender and
+    // they aren't bookmarked.
     public Character(String name) {
         this.name = name;
         age = 0;
         bio = "";
         gender = "";
+        bmark = false;
     }
 
     // MODIFIES: this
