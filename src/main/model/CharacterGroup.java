@@ -22,9 +22,23 @@ public class CharacterGroup {
         //stub
     }
 
+    // MODIFIES: this
+    // adds a character to the group
+    public void addToGroup(Character chara) {
+        // stub
+    }
+
     // REQUIRES: a non-empty list
-    
+    // EFFECT: Finds the place/order number of a character on the list and returns it
     public int findChar(Character chara){
         return 0;
+    }
+
+    public String getGroupName(){
+        return groupName;
+    }
+
+    public void setGroupName(String groupName){
+        this.groupName = groupName;
     }
 }
