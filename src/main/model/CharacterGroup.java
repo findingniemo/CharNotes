@@ -8,7 +8,7 @@ public class CharacterGroup {
     private List<Character> charGroup;
     private String groupName;
 
-    // EFFECTS: creates an empty character list/group
+    // EFFECTS: creates an empty character list/group with the given name
     public CharacterGroup(String groupName) {
         this.groupName = groupName;
         charGroup = new ArrayList<Character>();
@@ -16,22 +16,37 @@ public class CharacterGroup {
 
     // REQUIRES: characterNum >= 0 && newOrder >= 0 && list length >= 2 
     // MODIFIES: this
-    // EFFECTS: changes the order of the character in the given position
-    // to the new position.
-    public void rearrange(int charNum, int newOrder){
-        //stub
+    // EFFECTS: changes the order of given characters
+    public void rearrange(Character char1, Character char2){
+        // int i = 0;
+        // int posChar1 = charGroup.findChar(char1);
+
+        // while (i <= size.groupName || ) {
+            
+        // }
+
+        // charGroup.remove(char1);
+        // charGroup.remove(char2);
+
     }
 
     // MODIFIES: this
     // adds a character to the group
     public void addToGroup(Character chara) {
-        // stub
+        charGroup.add(chara);
     }
 
     // REQUIRES: a non-empty list
     // EFFECT: Finds the place/order number of a character on the list and returns it
     public int findChar(Character chara){
-        return 0;
+       
+     int i = 0;
+        
+        while (!chara.equals(charGroup.get(i))) {
+            i ++;
+        }
+
+        return i;
     }
 
     public ArrayList<Character> getGroup() {
