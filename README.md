@@ -14,10 +14,12 @@ Of course, you might ask: "Why not use a regular noting app?". Regular note apps
 - I want to be able to add a character to my list of characters and specify their name and later add their age, gender, ethnicity etc. (all necessary character details) and their biography.
 - I want to be able to select a character and view their details.
 - I want to be able to make changes to character details.
-- I want to be able to remove characters and revive the ones I accidentally deleted (from some sort of recycle in).
-- I want to be able to bookmark characters of my choosing and have a shortcut to them.
-- I want to be able to change the order of my characters in the characters list, based on which character I am prioritizing at the time.
 - I want to be able to categorize my characters based on the story they are in or based on character tags I add myself.
+- I want to be able to bookmark characters of my choosing and have a shortcut to them.
+- I want to be able to remove characters and revive the ones I accidentally deleted (from some sort of recycle in).
+- I want to be able to change the order of my characters in the characters list, based on which character I am prioritizing at the time.
+
+## FUTURE PLANS
 - When I cannot come up with a name, I want to be able to randomize character names based on ethnicity/genre.
 - I want to be able to draw simple relationship trees for my characters.
 - I want to be able to make small character icons for my characters.

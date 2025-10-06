@@ -14,7 +14,7 @@ public class CharacterGroup {
         charGroup = new ArrayList<Character>();
     }
 
-    // REQUIRES: characterNum >= 0 && newOrder >= 0
+    // REQUIRES: characterNum >= 0 && newOrder >= 0 && list length >= 2 
     // MODIFIES: this
     // EFFECTS: changes the order of the character in the given position
     // to the new position.
@@ -32,6 +32,10 @@ public class CharacterGroup {
     // EFFECT: Finds the place/order number of a character on the list and returns it
     public int findChar(Character chara){
         return 0;
+    }
+
+    public ArrayList<Character> getGroup() {
+        return null;
     }
 
     public String getGroupName(){
