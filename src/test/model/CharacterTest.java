@@ -8,14 +8,14 @@ import org.junit.jupiter.api.Test;
 
 public class CharacterTest {
     private Character testChar;
+    private Character extra;
     private String name;
-    private String name1;
     
     @BeforeEach
     void runBefore() {
         testChar = new Character("Mike");
+        extra = new Character("Bob");
         name = "Bill";
-        name1 = "Mike";
     }
 
     @Test
@@ -38,6 +38,25 @@ public class CharacterTest {
         assertTrue(testChar.getBookMark());
         testChar.changeBmark();
         assertFalse(testChar.getBookMark());
+    }
+
+    @Test
+    void testAddFamily() {
+        testChar.addFamily(extra);
+        assertEquals(extra, testChar.getFamily().getGroup().get(0));
+    }
+
+    @Test
+    void testIsRelated() {
+        testChar.addFamily(extra);
+        assertTrue(testChar.isRelated(extra));
+        assertFalse(testChar.isRelated(new Character("Billy")));
+    }
+
+    @Test
+    void testListFamilyMembers() {
+        testChar.addFamily(extra);
+        assertEquals("Bob ", testChar.listFamilyMembers());
     }
 
 }

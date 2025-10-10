@@ -22,15 +22,20 @@ public class Character {
         family = new CharacterGroup("Family");
     }
 
-    // EFFECTS: produces true if the given character is related to the character the method
-    // is being used on
-    public boolean isRelated() {
+    // EFFECTS: produces true if two characters are related
+    public boolean isRelated(Character chara) {
         return true;
     }
 
-    // EFFECTS: produces all family members as a string
+    // // EFFECTS: produces all family members as a string
     public String listFamilyMembers() {
         return "";
+    }
+
+    // MODIFIES: this
+    // EFFECTS: adds character to family
+    public void addFamily(Character chara) {
+
     }
 
     // MODIFIES: this
@@ -82,6 +87,10 @@ public class Character {
 
     public boolean getBookMark() {
         return bmark;
+    }
+
+    public CharacterGroup getFamily() {
+        return family;
     }
 
 }
