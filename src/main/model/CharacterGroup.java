@@ -18,17 +18,17 @@ public class CharacterGroup {
     // && characterNum & newOrder < list length
     // MODIFIES: this
     // EFFECTS: changes the order of given characters
-    public void rearrange(int charNum, int newOrder){
+    public void rearrange(int charNum, int newOrder) {
         Character charTarget = charGroup.get(charNum);
 
-            if (charNum <= newOrder) {
-                charGroup.add(newOrder + 1, charTarget);
-                charGroup.remove(charTarget);
+        if (charNum <= newOrder) {
+            charGroup.add(newOrder + 1, charTarget);
+            charGroup.remove(charTarget);
 
-            } else {
-                charGroup.add(newOrder, charTarget);
-                charGroup.remove(charNum + 1);
-            }
+        } else {
+            charGroup.add(newOrder, charTarget);
+            charGroup.remove(charNum + 1);
+        }
 
     }
 
@@ -39,38 +39,39 @@ public class CharacterGroup {
     }
 
     // REQUIRES: a non-empty list
-    // EFFECT: Finds the place/order number of a character on the list and returns it
-    public int findChar(Character chara){
-       
-     int i = 0;
-        
+    // EFFECT: Finds the place/order number of a character on the list and returns
+    // it
+    public int findChar(Character chara) {
+
+        int i = 0;
+
         while (!chara.equals(charGroup.get(i))) {
-            i ++;
+            i++;
         }
 
         return i;
     }
 
-    public List<Character> getGroup(){
+    public List<Character> getGroup() {
         return charGroup;
     }
 
-    public String getGroupName(){
+    public String getGroupName() {
         return groupName;
     }
 
-    public void setGroupName(String groupName){
+    public void setGroupName(String groupName) {
         this.groupName = groupName;
     }
 
-    // EFFECTS: Produces a string with all character names 
+    // EFFECTS: Produces a string with all character names
     public String listMembers() {
         String str = "";
 
-        for(Character next: charGroup){
+        for (Character next : charGroup) {
             str = str + next.getName() + " ";
         }
-    
+
         return str;
     }
 }

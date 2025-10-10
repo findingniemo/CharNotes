@@ -7,7 +7,7 @@ public class Character {
     private String gender;
     private String bio;
     private int age;
-    public boolean bmark;
+    private boolean bmark;
 
     // EFFECTS: the name of the character is set to the name
     // entered. The character has age 0, no biograpy, no gender and
@@ -22,42 +22,42 @@ public class Character {
 
     // MODIFIES: this
     // EFFECTS: sets character name to entered name
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
 
     // REQUIRES: entered age >= 0
     // MODIFIES: this
     // EFFECTS: sets character age to entered age
-    public void setAge(int age){
+    public void setAge(int age) {
         this.age = age;
     }
 
     // MODIFIES: this
     // EFFECTS: sets character bio to entered bio
-    public void setBio(String bio){
+    public void setBio(String bio) {
         this.bio = bio;
     }
 
     // MODIFIES: this
     // EFFECTS: sets character gender to entered gender
-    public void setGender(String gender){
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
-    public int getAge(){
+    public int getAge() {
         return age;
     }
 
-    public String getBio(){
+    public String getBio() {
         return bio;
     }
 
-    public String getGender(){
+    public String getGender() {
         return gender;
     }
 

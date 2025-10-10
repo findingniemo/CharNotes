@@ -15,7 +15,7 @@ public class CharacterGroupTest {
     private Character bob;
     private Character bill;
     private ArrayList<Character> expectedList;
-    
+
     @BeforeEach
     void runBefore() {
         testGroup = new CharacterGroup("general");
@@ -30,7 +30,8 @@ public class CharacterGroupTest {
         assertEquals("general", testGroup.getGroupName());
         testGroup.setGroupName("Burgers");
         assertEquals("Burgers", testGroup.getGroupName());
-        assertEquals(expectedList, testGroup.getGroup());;
+        assertEquals(expectedList, testGroup.getGroup());
+        ;
     }
 
     @Test
