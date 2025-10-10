@@ -8,6 +8,7 @@ public class Character {
     private String bio;
     private int age;
     private boolean bmark;
+    private CharacterGroup family;
 
     // EFFECTS: the name of the character is set to the name
     // entered. The character has age 0, no biograpy, no gender and
@@ -18,6 +19,18 @@ public class Character {
         bio = "";
         gender = "";
         bmark = false;
+        family = new CharacterGroup("Family");
+    }
+
+    // EFFECTS: produces true if the given character is related to the character the method
+    // is being used on
+    public boolean isRelated() {
+        return true;
+    }
+
+    // EFFECTS: produces all family members as a string
+    public String listFamilyMembers() {
+        return "";
     }
 
     // MODIFIES: this
