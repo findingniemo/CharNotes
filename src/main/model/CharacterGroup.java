@@ -49,8 +49,8 @@ public class CharacterGroup {
         return i;
     }
 
-    public ArrayList<Character> getGroup() {
-        return null;
+    public List<Character> getGroup(){
+        return charGroup;
     }
 
     public String getGroupName(){
@@ -59,5 +59,16 @@ public class CharacterGroup {
 
     public void setGroupName(String groupName){
         this.groupName = groupName;
+    }
+
+    // EFFECTS: Produces a string with all character names 
+    public String listMembers() {
+        String str = "";
+
+        for(Character next: charGroup){
+            str = str + next.getName() + " ";
+        }
+    
+        return str;
     }
 }

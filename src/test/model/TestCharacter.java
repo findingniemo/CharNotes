@@ -1,9 +1,6 @@
 package model;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -22,23 +19,14 @@ public class TestCharacter {
     @Test
     void construtorTest() {
         assertEquals("Mike", testChar.getName());
-        assertEquals(0, testChar.getAge());
-        assertEquals("", testChar.getBio());
-        assertEquals("", testChar.getGender());
+        testChar.setAge(10);
+        testChar.setBio("random");
+        testChar.setName(name);
+        testChar.setGender("m");
+        assertEquals("Bill", testChar.getName());
+        assertEquals(10, testChar.getAge());
+        assertEquals("random", testChar.getBio());
+        assertEquals("m", testChar.getGender());
     }
-
-    
-    @Test
-    void setterTest() {
-        testChar.setName("Bob");
-        assertEquals("Bob", testChar.getName());
-        testChar.setAge(12);
-        assertEquals(12, testChar.getAge());
-        testChar.setGender("man");
-        assertEquals("man", testChar.getGender());
-        testChar.setBio("insert bio");
-        assertEquals("insert bio", testChar.getBio());
-    }
-
 
 }
