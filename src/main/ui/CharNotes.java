@@ -76,6 +76,7 @@ public class CharNotes {
                 System.out.println("Name:" + chara.getName());
                 System.out.println("Age:" + chara.getAge());
                 System.out.println("Gender:" + chara.getGender());
+                System.out.println("Family:" + chara.listFamilyMembers());
                 System.out.println("Biography:" + chara.getBio());
             }
         }
@@ -94,9 +95,10 @@ public class CharNotes {
             } else {
                 charaEdit = mainList.getGroup().get(charPosition);
                 System.out.println("Which character information would you like to edit? Enter number:");
-                System.out.println("1: Name, 2: Age, 3: Gender, 4: Biography");
+                System.out.println("1: Name, 2: Age, 3: Gender, 4: Family; 5: Biography");
                 int choice = input.nextInt();
                 editCharacterHelper(choice);
+                System.out.println("Done!");
             }
         }
     }
@@ -114,12 +116,19 @@ public class CharNotes {
             System.out.println("Enter new gender:");
             charaEdit.setGender(input.next());
         } else if (choice == 4) {
+            System.out.println("Who are they related to? (enter int position)");
+            int num = input.nextInt();
+            if (num > mainList.getGroup().size()) {
+                System.out.println("There is no character in that location");
+            } else {
+                charaEdit.addFamily(mainList.getGroup().get(num));
+            }
+        } else if (choice == 5) {
             System.out.println("Enter new biography:");
             charaEdit.setBio(input.next());
         } else {
             System.out.println("Not a valid option");
         }
-        System.out.println("Done!");
     }
 
     // MODIFIES: this

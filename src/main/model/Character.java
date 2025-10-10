@@ -12,7 +12,7 @@ public class Character {
 
     // EFFECTS: the name of the character is set to the name
     // entered. The character has age 0, no biograpy, no gender and
-    // they aren't bookmarked.
+    // they aren't bookmarked and have no family members.
     public Character(String name) {
         this.name = name;
         age = 0;
