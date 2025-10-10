@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class TestCharacter {
+public class CharacterTest {
     private Character testChar;
     private String name;
     private String name1;
@@ -17,7 +17,7 @@ public class TestCharacter {
     }
 
     @Test
-    void construtorTest() {
+    void testConstrutor() {
         assertEquals("Mike", testChar.getName());
         testChar.setAge(10);
         testChar.setBio("random");

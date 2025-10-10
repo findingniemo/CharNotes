@@ -25,9 +25,9 @@ public class CharacterGroup {
                 charGroup.add(newOrder + 1, charTarget);
                 charGroup.remove(charTarget);
 
-            } else if (charNum > newOrder) {
+            } else {
                 charGroup.add(newOrder, charTarget);
-                charGroup.remove(charGroup.get(charNum + 1));
+                charGroup.remove(charNum + 1);
             }
 
     }

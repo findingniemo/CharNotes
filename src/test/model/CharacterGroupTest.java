@@ -8,7 +8,7 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class TestCharacterGroup {
+public class CharacterGroupTest {
 
     private CharacterGroup testGroup;
     private Character mike;
@@ -26,7 +26,7 @@ public class TestCharacterGroup {
     }
 
     @Test
-    void construtorTest() {
+    void testConstrutor() {
         assertEquals("general", testGroup.getGroupName());
         testGroup.setGroupName("Burgers");
         assertEquals("Burgers", testGroup.getGroupName());
@@ -34,7 +34,7 @@ public class TestCharacterGroup {
     }
 
     @Test
-    void rearrangeTwoPeopleTest() {
+    void testRearrangeTwoPeople() {
         testGroup.addToGroup(mike);
         testGroup.addToGroup(bob);
         testGroup.rearrange(0, 1);
@@ -44,7 +44,7 @@ public class TestCharacterGroup {
     }
 
     @Test
-    void rearrangeMorePeopleTest() {
+    void testRearrangeMorePeople() {
         testGroup.addToGroup(mike);
         testGroup.addToGroup(bob);
         testGroup.addToGroup(bill);
@@ -61,7 +61,29 @@ public class TestCharacterGroup {
     }
 
     @Test
-    void listMembersTest() {
+    void testRearrangeSamePeople() {
+        testGroup.addToGroup(mike);
+        testGroup.addToGroup(bob);
+        testGroup.rearrange(0, 0);
+        List<Character> a = testGroup.getGroup();
+        assertEquals(mike, a.get(0));
+        assertEquals(bob, a.get(1));
+    }
+
+    @Test
+    void testRearrangePeopleGreaterCharNum() {
+        testGroup.addToGroup(mike);
+        testGroup.addToGroup(bob);
+        testGroup.addToGroup(bill);
+        testGroup.rearrange(1, 0);
+        List<Character> a = testGroup.getGroup();
+        assertEquals(mike, a.get(1));
+        assertEquals(bob, a.get(0));
+        assertEquals(bill, a.get(2));
+    }
+
+    @Test
+    void testListMembers() {
         testGroup.addToGroup(bill);
         testGroup.addToGroup(bob);
         testGroup.addToGroup(mike);
@@ -70,7 +92,7 @@ public class TestCharacterGroup {
     }
 
     @Test
-    void findCharTest() {
+    void testFindChar() {
         testGroup.addToGroup(bill);
         testGroup.addToGroup(bob);
         testGroup.addToGroup(mike);
