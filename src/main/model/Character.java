@@ -45,6 +45,12 @@ public class Character {
         this.gender = gender;
     }
 
+    // MODIFIES: this
+    // EFFECTS: sets bookmarked status to true if false, and false if true
+    public void changeBmark() {
+        bmark = !bmark;
+    }
+
     public String getName() {
         return name;
     }
@@ -59,6 +65,10 @@ public class Character {
 
     public String getGender() {
         return gender;
+    }
+
+    public boolean getBookMark() {
+        return bmark;
     }
 
 }

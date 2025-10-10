@@ -1,5 +1,7 @@
 package model;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -27,6 +29,15 @@ public class CharacterTest {
         assertEquals(10, testChar.getAge());
         assertEquals("random", testChar.getBio());
         assertEquals("m", testChar.getGender());
+        assertFalse(testChar.getBookMark());
+    }
+
+    @Test
+    void testChangeBmark() {
+        testChar.changeBmark();
+        assertTrue(testChar.getBookMark());
+        testChar.changeBmark();
+        assertFalse(testChar.getBookMark());
     }
 
 }
