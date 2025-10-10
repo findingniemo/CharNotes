@@ -14,26 +14,21 @@ public class CharacterGroup {
         charGroup = new ArrayList<Character>();
     }
 
-    // REQUIRES: characterNum >= 0 && newOrder >= 0 && list length >= 2 
+    // REQUIRES: characterNum >= 0 && newOrder >= 0 && list length >= 2
+    // && characterNum & newOrder < list length
     // MODIFIES: this
     // EFFECTS: changes the order of given characters
     public void rearrange(int charNum, int newOrder){
-        int i = 0;
-        Character char1 = charGroup.get(charNum);
-        Character char2 = charGroup.get(newOrder);
+        Character charTarget = charGroup.get(charNum);
 
-        while (i <= charGroup.size()) {
-            if (charNum < newOrder) {
-                
+            if (charNum <= newOrder) {
+                charGroup.add(newOrder + 1, charTarget);
+                charGroup.remove(charTarget);
+
             } else if (charNum > newOrder) {
-
-            } else {}
-
-            i ++;
-        }
-
-        charGroup.remove(char1);
-        charGroup.remove(char2);
+                charGroup.add(newOrder, charTarget);
+                charGroup.remove(charGroup.get(charNum + 1));
+            }
 
     }
 
