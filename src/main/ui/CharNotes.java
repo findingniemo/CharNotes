@@ -179,6 +179,7 @@ public class CharNotes {
     private void displayMenu() {
         System.out.println("All Characters:");
         System.out.println(mainList.listMembers());
+        System.out.println(mainList.listMemberNumbers());
         System.out.println("\nControls:");
         System.out.println("\tv -> view character info");
         System.out.println("\ta -> add character");

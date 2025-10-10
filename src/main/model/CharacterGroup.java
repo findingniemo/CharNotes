@@ -91,7 +91,7 @@ public class CharacterGroup {
                 a++;
             }
             str = str + i + space;
-            i ++;
+            i++;
         }
 
         return str;
