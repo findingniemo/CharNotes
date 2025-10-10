@@ -24,18 +24,25 @@ public class Character {
 
     // EFFECTS: produces true if two characters are related
     public boolean isRelated(Character chara) {
-        return true;
+        boolean related = false;
+        for (Character next : family.getGroup()) {
+            if (chara == next) {
+                related = true;
+            }
+        }
+        return related;
     }
 
-    // // EFFECTS: produces all family members as a string
+    // EFFECTS: produces all family members as a string
     public String listFamilyMembers() {
-        return "";
+        String famList = family.listMembers();
+        return famList;
     }
 
     // MODIFIES: this
     // EFFECTS: adds character to family
     public void addFamily(Character chara) {
-
+        family.addToGroup(chara);
     }
 
     // MODIFIES: this

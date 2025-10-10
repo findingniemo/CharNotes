@@ -10,7 +10,7 @@ public class CharacterTest {
     private Character testChar;
     private Character extra;
     private String name;
-    
+
     @BeforeEach
     void runBefore() {
         testChar = new Character("Mike");
