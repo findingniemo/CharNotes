@@ -5,7 +5,7 @@ import java.util.List;
 
 // Represents a character group (category/list) with a group name
 public class CharacterGroup {
-    private List<Character> charGroup;
+    private ArrayList<Character> charGroup;
     private String groupName;
 
     // EFFECTS: creates an empty character list/group with the given name
@@ -17,16 +17,23 @@ public class CharacterGroup {
     // REQUIRES: characterNum >= 0 && newOrder >= 0 && list length >= 2 
     // MODIFIES: this
     // EFFECTS: changes the order of given characters
-    public void rearrange(Character char1, Character char2){
-        // int i = 0;
-        // int posChar1 = charGroup.findChar(char1);
+    public void rearrange(int charNum, int newOrder){
+        int i = 0;
+        Character char1 = charGroup.get(charNum);
+        Character char2 = charGroup.get(newOrder);
 
-        // while (i <= size.groupName || ) {
-            
-        // }
+        while (i <= charGroup.size()) {
+            if (charNum < newOrder) {
+                
+            } else if (charNum > newOrder) {
 
-        // charGroup.remove(char1);
-        // charGroup.remove(char2);
+            } else {}
+
+            i ++;
+        }
+
+        charGroup.remove(char1);
+        charGroup.remove(char2);
 
     }
 

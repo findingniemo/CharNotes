@@ -50,22 +50,44 @@ public class CharNotes {
     private void processCommand(String command) {
         if (command.equals("v")) {
             viewList();
-        } else {
-            System.out.println("Selection not valid...");
+        } 
+    }
+
+    private void listCommands(String command) {
+        if (command.equals("a")) {
+            addCharacter();
+        } else if (command.equals("d")) { 
+            delCharacter();
+        } else if (command.equals("r")) {
+            doRearrange();
         }
+    }
+
+    private void doRearrange() {
+        viewList();
+    }
+
+    private void delCharacter() {
+        viewList();
+    }
+
+    private void addCharacter() {
+        viewList();
     }
 
     // EFFECTS: Displays the names of all characters in the main character group
     private void viewList() {
-        // TODO Auto-generated method stub
         System.out.println(mainList.listMembers());
+        System.out.println("\ta -> add character");
+        System.out.println("\td -> remove character");
+        System.out.println("\tr -> rearrange characters");
     }
 
     // EFFECTS: displays menu of options to user
     private void displayMenu() {
         System.out.println("\nControls:");
-        System.out.println("\tv -> view all");
-        System.out.println("\tother options tba!");
+        System.out.println("\tv -> view general list");
+        System.out.println("\tOTHER OPTIONS TBA!");
         System.out.println("\tq -> quit");
     }
 
