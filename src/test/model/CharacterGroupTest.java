@@ -101,4 +101,12 @@ public class CharacterGroupTest {
         assertEquals(1, testGroup.findChar(bob));
         assertEquals(2, testGroup.findChar(mike));
     }
+
+    @Test
+    void ListMemberNumbers() {
+        testGroup.addToGroup(bill);
+        testGroup.addToGroup(bob);
+        testGroup.addToGroup(mike);
+        assertEquals("0    1   2    ", testGroup.listMemberNumbers());
+    }
 }

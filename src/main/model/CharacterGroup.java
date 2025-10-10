@@ -74,4 +74,26 @@ public class CharacterGroup {
 
         return str;
     }
+
+    // EFFECTS: Produces string of numbers corresponding to each name listMembers()
+    // produces
+    public String listMemberNumbers() {
+        String str = "";
+        int i = 0;
+        int count = 0;
+
+        while (i < charGroup.size()) {
+            count = charGroup.get(i).getName().length();
+            String space = "";
+            int a = 0;
+            while (a < count) {
+                space = space + " ";
+                a++;
+            }
+            str = str + i + space;
+            i ++;
+        }
+
+        return str;
+    }
 }
