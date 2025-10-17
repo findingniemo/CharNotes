@@ -18,6 +18,11 @@ Of course, you might ask: "Why not use a regular noting app?". Regular note apps
 - I want to be able to make changes to character details.
 - I want to be able to change the order of my characters in the characters list, based on which character I am prioritizing at the time.
 
+### Phase 2:
+- I want to be able to manually save all my characters to file.
+- I want to be able to reload all my characters from file.
+
+
 ### Plans For The Near Future:
 - I want to be able to categorize my characters based on the story they are in or based on character tags I add myself.
 - I want to be able to bookmark characters of my choosing and have a shortcut to them.
