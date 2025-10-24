@@ -1,0 +1,17 @@
+{
+    "characters": [
+        {
+            "name": "Nat",
+            "age": 24,
+            "gender": "woman",
+            "bio": "a supernatural hunter"
+        },
+        {
+            "name": "Alas",
+            "age": 17,
+            "gender": "man",
+            "bio": "annoying child"
+        }
+    ],
+    "name": "General"
+}

@@ -26,8 +26,8 @@ class JsonReaderTest extends JsonTest {
     }
 
     @Test
-    void testReaderEmptyWorkRoom() {
-        JsonReader reader = new JsonReader("./data/testReaderEmptyCharacterGroup.json");
+    void testReaderEmptyCharacterGroup() {
+        JsonReader reader = new JsonReader("src\\data\\testReaderEmptyCharacterGroup.json");
         try {
             CharacterGroup cg = reader.read();
             assertEquals("My Characters", cg.getGroupName());
@@ -38,15 +38,15 @@ class JsonReaderTest extends JsonTest {
     }
 
     @Test
-    void testReaderGeneralWorkRoom() {
-        JsonReader reader = new JsonReader("./data/testReaderGeneralCharacterGroup.json");
+    void testReaderGeneralCharacterGroup() {
+        JsonReader reader = new JsonReader("src\\data\\testReaderGeneralCharacterGroup.json");
         try {
             CharacterGroup cg = reader.read();
             assertEquals("General", cg.getGroupName());
             List<Character> group = cg.getGroup();
             assertEquals(2, group.size());
-            checkCharacter("Nat",  group.get(0));
-            checkCharacter("Alas", group.get(1));
+            checkCharacter("Nat", 24, "woman", "a supernatural hunter", group.get(0));
+            checkCharacter("Alas", 17, "man", "annoying child", group.get(1));
         } catch (IOException e) {
             fail("Couldn't read from file");
         }
