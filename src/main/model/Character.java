@@ -30,6 +30,9 @@ public class Character implements Writable{
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("name", name);
+        json.put("age", age);
+        json.put("gender", gender);
+        json.put("bio", bio);
         return json;
     }
 

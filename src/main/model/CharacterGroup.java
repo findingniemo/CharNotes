@@ -23,11 +23,12 @@ public class CharacterGroup implements Writable{
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("name", groupName);
+         json.put("characters", charactersToJson());
         return json;
     }
 
      // EFFECTS: returns things in this workroom as a JSON array
-    private JSONArray thingiesToJson() {
+    private JSONArray charactersToJson() {
         JSONArray jsonArray = new JSONArray();
 
         for (Character c : charGroup) {
