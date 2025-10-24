@@ -45,13 +45,13 @@ public class Character implements Writable {
     // METHOD DEFINITON COMMENTED OUT BEECUASE IT IS NOT BEING USED
     // // EFFECTS: produces true if two characters are related
     // public boolean isRelated(Character chara) {
-    //     boolean related = false;
-    //     for (Character next : family.getGroup()) {
-    //         if (chara == next) {
-    //             related = true;
-    //         }
-    //     }
-    //     return related;
+    // boolean related = false;
+    // for (Character next : family.getGroup()) {
+    // if (chara == next) {
+    // related = true;
+    // }
+    // }
+    // return related;
     // }
 
     // EFFECTS: produces all family members as a string
@@ -65,12 +65,15 @@ public class Character implements Writable {
         return str;
     }
 
-    // MODIFIES: this
+    // MODIFIES: this & chara
     // EFFECTS: adds character to family if character isn't already there
+    // also makes changes to the other character
     public void addFamily(Character chara) {
         String charaName = chara.getName();
-        if(!family.contains(charaName)) {
+        if (!family.contains(charaName)) {
             family.add(charaName);
+            List<String> otherSide = chara.getFamily();
+            otherSide.add(this.name);
         }
     }
 

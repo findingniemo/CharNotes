@@ -106,7 +106,7 @@ public class CharacterGroupTest {
     }
 
     @Test
-    void ListMemberNumbers() {
+    void listMemberNumbers() {
         testGroup.addToGroup(bill);
         testGroup.addToGroup(bob);
         testGroup.addToGroup(mike);

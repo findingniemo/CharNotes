@@ -2,6 +2,8 @@ package persistence;
 
 import model.Character;
 import model.CharacterGroup;
+
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
@@ -15,6 +17,29 @@ import static org.junit.jupiter.api.Assertions.*;
 @ExcludeFromJacocoGeneratedReport
 class JsonWriterTest extends JsonTest {
 
+    private Character c1;
+    private Character c2;
+    private List<String> fam;
+    private List<String> fam1;
+
+    @BeforeEach
+    void runBefore() {
+        c1 = new Character("Nat");
+        c2 = new Character("Alas");
+        fam = new ArrayList<String>();
+        fam1 = new ArrayList<String>();
+        fam.add("Alas");
+        fam1.add("Nat");
+        c1.setAge(24);
+        c2.setAge(17);
+        c1.setGender("woman");
+        c2.setGender("man");
+        c1.setBio("a supernatural hunter");
+        c2.setBio("annoying child"); 
+        c1.setFamily(fam);
+        c2.setFamily(fam1);
+    }
+    
     @Test
     void testWriterInvalidFile() {
         try {
@@ -46,20 +71,6 @@ class JsonWriterTest extends JsonTest {
 
     @Test
     void testWriterGeneralCharacterGroup() {
-        Character c1 = new Character("Nat");
-        Character c2 = new Character("Alas");
-        List<String> fam = new ArrayList<String>();
-        List<String> fam1 = new ArrayList<String>();
-        fam.add("Alas");
-        fam1.add("Nat");
-        c1.setAge(24);
-        c2.setAge(17);
-        c1.setGender("woman");
-        c2.setGender("man");
-        c1.setBio("a supernatural hunter");
-        c2.setBio("annoying child"); 
-        c1.setFamily(fam);
-        c2.setFamily(fam1);
 
         try {
             CharacterGroup cg = new CharacterGroup("General");

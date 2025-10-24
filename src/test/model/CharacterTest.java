@@ -47,6 +47,7 @@ public class CharacterTest {
     void testAddFamily() {
         testChar.addFamily(extra);
         assertEquals("Bob", testChar.getFamily().get(0));
+        assertEquals("Mike", extra.getFamily().get(0));
     }
 
     @Test
@@ -55,6 +56,8 @@ public class CharacterTest {
         testChar.addFamily(extra);
         assertEquals("Bob", testChar.getFamily().get(0));
         assertEquals(1, testChar.getFamily().size());
+        assertEquals("Mike", extra.getFamily().get(0));
+        assertEquals(1, extra.getFamily().size());
     }
 
     // @Test
