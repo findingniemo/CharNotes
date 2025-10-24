@@ -19,6 +19,7 @@ public class CharacterGroup implements Writable {
         charGroup = new ArrayList<Character>();
     }
 
+    // EFFECTS: produces a jsonObject for this character group
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

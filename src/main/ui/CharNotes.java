@@ -23,7 +23,7 @@ public class CharNotes {
     private JsonReader jsonReader;
 
 
-    // EFFECTS: runs the teller application
+    // EFFECTS: runs the CharacterNotes application
     public CharNotes() throws FileNotFoundException {
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);

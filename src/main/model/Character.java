@@ -30,6 +30,7 @@ public class Character implements Writable {
         family = new ArrayList<>();
     }
 
+    // EFFECTS: produces a JsonObject for this character
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
@@ -67,7 +68,7 @@ public class Character implements Writable {
 
     // MODIFIES: this & chara
     // EFFECTS: adds character to family if character isn't already there
-    // also makes changes to the other character
+    // also adds this character to the other character's family
     public void addFamily(Character chara) {
         String charaName = chara.getName();
         if (!family.contains(charaName)) {
