@@ -11,6 +11,7 @@ public class RelationshipTree {
     }
 
     // EFFECTS: draws the relationshiop tree of the given character
-    public void drawTree() {}
-    
+    public void drawTree() {
+    }
+
 }

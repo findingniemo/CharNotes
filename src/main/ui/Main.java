@@ -1,5 +1,7 @@
 package ui;
 
+import java.io.FileNotFoundException;
+
 import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
 
 // References: https://github.students.cs.ubc.ca/CPSC210/TellerApp
@@ -8,6 +10,10 @@ import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
 public class Main {
     public static void main(String[] args) {
         System.out.println("Welcome to CharNotes!");
-        new CharNotes();
+        try {
+            new CharNotes();
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to run application: file not found");
+        }
     }
 }

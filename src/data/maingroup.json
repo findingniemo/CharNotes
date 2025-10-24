@@ -1,0 +1,17 @@
+{
+    "characters": [
+        {
+            "gender": "woman",
+            "name": "Nat",
+            "bio": "supernatural hunter",
+            "age": 24
+        },
+        {
+            "gender": "",
+            "name": "Alas",
+            "bio": "",
+            "age": 0
+        }
+    ],
+    "name": "General List"
+}

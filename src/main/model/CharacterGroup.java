@@ -9,7 +9,7 @@ import org.json.JSONObject;
 import persistence.Writable;
 
 // Represents a character group (category/list) with a group name
-public class CharacterGroup implements Writable{
+public class CharacterGroup implements Writable {
     private ArrayList<Character> charGroup;
     private String groupName;
 
@@ -23,11 +23,11 @@ public class CharacterGroup implements Writable{
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("name", groupName);
-         json.put("characters", charactersToJson());
+        json.put("characters", charactersToJson());
         return json;
     }
 
-     // EFFECTS: returns things in this workroom as a JSON array
+    // EFFECTS: returns things in this workroom as a JSON array
     private JSONArray charactersToJson() {
         JSONArray jsonArray = new JSONArray();
 

@@ -6,7 +6,7 @@ import persistence.Writable;
 
 // Represents a character with a name, age, gender, biography and bookmark
 // status.
-public class Character implements Writable{
+public class Character implements Writable {
     private String name;
     private String gender;
     private String bio;

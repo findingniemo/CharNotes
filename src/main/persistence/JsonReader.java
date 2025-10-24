@@ -68,6 +68,6 @@ public class JsonReader {
         chara.setAge(age);
         chara.setGender(gender);
         chara.setBio(bio);
-        cg.addToGroup (chara);
+        cg.addToGroup(chara);
     }
 }

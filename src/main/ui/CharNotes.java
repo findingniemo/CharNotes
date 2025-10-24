@@ -1,22 +1,31 @@
 package ui;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 import model.Character;
 import model.CharacterGroup;
-
+import persistence.JsonReader;
+import persistence.JsonWriter;
 import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
 
 // References: https://github.students.cs.ubc.ca/CPSC210/TellerApp
 //             https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
 
 public class CharNotes {
-    CharacterGroup mainList;
-    Scanner input;
-    Character charaEdit;
+    private static final String JSON_STORE = "src\\data\\maingroup.json";
+    private CharacterGroup mainList;
+    private Scanner input;
+    private Character charaEdit;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
+
 
     // EFFECTS: runs the teller application
-    public CharNotes() {
+    public CharNotes() throws FileNotFoundException {
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         runChar();
     }
 
@@ -64,6 +73,10 @@ public class CharNotes {
             doRearrange();
         } else if (command.equals("e")) {
             editCharacter();
+        } else if (command.equals("s")) {
+            saveCharacterGroup();
+        } else if (command.equals("l")) {
+            loadCharacterGroup();
         }
     }
 
@@ -201,7 +214,32 @@ public class CharNotes {
         System.out.println("\td -> remove character");
         System.out.println("\tr -> rearrange characters");
         System.out.println("\tOTHER OPTIONS TBA!");
+        System.out.println("\ts -> save characters to file");
+        System.out.println("\tl -> load characters from file");
         System.out.println("\tq -> quit");
+    }
+
+    // EFFECTS: saves character group to file
+    private void saveCharacterGroup() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(mainList);
+            jsonWriter.close();
+            System.out.println("Saved " + mainList.getGroupName() + " to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads character group from file
+    private void loadCharacterGroup() {
+        try {
+            mainList = jsonReader.read();
+            System.out.println("Loaded " + mainList.getGroupName() + " from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
     }
     
 }
