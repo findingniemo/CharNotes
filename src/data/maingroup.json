@@ -3,13 +3,22 @@
         {
             "gender": "woman",
             "name": "Nat",
-            "bio": "supernatural hunter",
+            "bio": "a supernatural hunter",
+            "family": ["Alas"],
             "age": 24
         },
         {
             "gender": "",
             "name": "Alas",
             "bio": "",
+            "family": [],
+            "age": 0
+        },
+        {
+            "gender": "",
+            "name": "Tiya",
+            "bio": "",
+            "family": [],
             "age": 0
         }
     ],

@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -47,12 +48,18 @@ class JsonWriterTest extends JsonTest {
     void testWriterGeneralCharacterGroup() {
         Character c1 = new Character("Nat");
         Character c2 = new Character("Alas");
+        List<String> fam = new ArrayList<String>();
+        List<String> fam1 = new ArrayList<String>();
+        fam.add("Alas");
+        fam1.add("Nat");
         c1.setAge(24);
         c2.setAge(17);
         c1.setGender("woman");
         c2.setGender("man");
         c1.setBio("a supernatural hunter");
         c2.setBio("annoying child"); 
+        c1.setFamily(fam);
+        c2.setFamily(fam1);
 
         try {
             CharacterGroup cg = new CharacterGroup("General");
@@ -66,10 +73,10 @@ class JsonWriterTest extends JsonTest {
             JsonReader reader = new JsonReader("src\\data\\testWriterGeneralCharacterGroup.json");
             cg = reader.read();
             assertEquals("General", cg.getGroupName());
-            List<Character> thingies = cg.getGroup();
-            assertEquals(2, cg.getGroup().size());
-            checkCharacter("Nat", 24, "woman", "a supernatural hunter", cg.getGroup().get(0));
-            checkCharacter("Alas", 17, "man", "annoying child", cg.getGroup().get(1));
+            List<Character> group = cg.getGroup();
+            assertEquals(2, group.size());
+            checkCharacter("Nat", 24, "woman", "a supernatural hunter", fam,  cg.getGroup().get(0));
+            checkCharacter("Alas", 17, "man", "annoying child", fam1, cg.getGroup().get(1));
 
         } catch (IOException e) {
             fail("Exception should not have been thrown");

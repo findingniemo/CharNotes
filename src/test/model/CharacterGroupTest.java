@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
 
+@ExcludeFromJacocoGeneratedReport
 public class CharacterGroupTest {
 
     private CharacterGroup testGroup;

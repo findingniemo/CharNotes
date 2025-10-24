@@ -1,7 +1,9 @@
 package ui;
 
 import model.CharacterGroup;
+import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
 
+@ExcludeFromJacocoGeneratedReport
 public class RelationshipTree {
     private CharacterGroup family;
 
@@ -10,7 +12,7 @@ public class RelationshipTree {
 
     }
 
-    // EFFECTS: draws the relationshiop tree of the given character
+    // EFFECTS: draws the relationship tree of the given character
     public void drawTree() {
     }
 

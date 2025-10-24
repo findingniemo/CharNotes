@@ -4,12 +4,14 @@
             "gender": "woman",
             "name": "Nat",
             "bio": "a supernatural hunter",
+            "family": ["Alas"],
             "age": 24
         },
         {
             "gender": "man",
             "name": "Alas",
             "bio": "annoying child",
+            "family": ["Nat"],
             "age": 17
         }
     ],

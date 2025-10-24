@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Stream;
 
 import org.json.*;
@@ -64,10 +66,13 @@ public class JsonReader {
         int age = jsonObject.getInt("age");
         String gender = jsonObject.getString("gender");
         String bio = jsonObject.getString("bio");
+        JSONArray jsonArray  = jsonObject.getJSONArray("family");
+        List family = jsonArray.toList();
         Character chara = new model.Character(name);
         chara.setAge(age);
         chara.setGender(gender);
         chara.setBio(bio);
+        chara.setFamily(family);
         cg.addToGroup(chara);
     }
 }

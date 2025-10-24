@@ -1,5 +1,9 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import persistence.Writable;
@@ -12,7 +16,7 @@ public class Character implements Writable {
     private String bio;
     private int age;
     private boolean bmark;
-    private CharacterGroup family;
+    private List<String> family;
 
     // EFFECTS: the name of the character is set to the name
     // entered. The character has age 0, no biograpy, no gender and
@@ -23,40 +27,51 @@ public class Character implements Writable {
         bio = "";
         gender = "";
         bmark = false;
-        // family = new CharacterGroup("Family"); temprorarily removed
+        family = new ArrayList<>();
     }
 
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
+        JSONArray jsonAr = new JSONArray(family);
         json.put("name", name);
         json.put("age", age);
         json.put("gender", gender);
         json.put("bio", bio);
+        json.put("family", jsonAr);
         return json;
     }
 
-    // EFFECTS: produces true if two characters are related
-    public boolean isRelated(Character chara) {
-        boolean related = false;
-        for (Character next : family.getGroup()) {
-            if (chara == next) {
-                related = true;
-            }
-        }
-        return related;
-    }
+    // METHOD DEFINITON COMMENTED OUT BEECUASE IT IS NOT BEING USED
+    // // EFFECTS: produces true if two characters are related
+    // public boolean isRelated(Character chara) {
+    //     boolean related = false;
+    //     for (Character next : family.getGroup()) {
+    //         if (chara == next) {
+    //             related = true;
+    //         }
+    //     }
+    //     return related;
+    // }
 
     // EFFECTS: produces all family members as a string
     public String listFamilyMembers() {
-        String famList = family.listMembers();
-        return famList;
+        String str = "";
+
+        for (String next : family) {
+            str = str + next + " ";
+        }
+
+        return str;
     }
 
     // MODIFIES: this
-    // EFFECTS: adds character to family
+    // EFFECTS: adds character to family if character isn't already there
     public void addFamily(Character chara) {
-        family.addToGroup(chara);
+        String charaName = chara.getName();
+        if(!family.contains(charaName)) {
+            family.add(charaName);
+        }
     }
 
     // MODIFIES: this
@@ -85,6 +100,12 @@ public class Character implements Writable {
     }
 
     // MODIFIES: this
+    // EFFECTS: sets character family to given family
+    public void setFamily(List family) {
+        this.family = family;
+    }
+
+    // MODIFIES: this
     // EFFECTS: sets bookmarked status to true if false, and false if true
     public void changeBmark() {
         bmark = !bmark;
@@ -110,7 +131,7 @@ public class Character implements Writable {
         return bmark;
     }
 
-    public CharacterGroup getFamily() {
+    public List getFamily() {
         return family;
     }
 

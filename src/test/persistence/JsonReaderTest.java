@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -45,8 +46,12 @@ class JsonReaderTest extends JsonTest {
             assertEquals("General", cg.getGroupName());
             List<Character> group = cg.getGroup();
             assertEquals(2, group.size());
-            checkCharacter("Nat", 24, "woman", "a supernatural hunter", group.get(0));
-            checkCharacter("Alas", 17, "man", "annoying child", group.get(1));
+            List<String> fam = new ArrayList<String>();
+            List<String> fam1 = new ArrayList<String>();
+            fam.add("Alas");
+            fam1.add("Nat");
+            checkCharacter("Nat", 24, "woman", "a supernatural hunter", fam,  cg.getGroup().get(0));
+            checkCharacter("Alas", 17, "man", "annoying child", fam1, cg.getGroup().get(1));
         } catch (IOException e) {
             fail("Couldn't read from file");
         }

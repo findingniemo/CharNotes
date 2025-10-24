@@ -13,6 +13,7 @@ import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
 // References: https://github.students.cs.ubc.ca/CPSC210/TellerApp
 //             https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
 
+@ExcludeFromJacocoGeneratedReport
 public class CharNotes {
     private static final String JSON_STORE = "src\\data\\maingroup.json";
     private CharacterGroup mainList;

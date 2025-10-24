@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
 
+@ExcludeFromJacocoGeneratedReport
 public class CharacterTest {
     private Character testChar;
     private Character extra;
@@ -45,15 +46,23 @@ public class CharacterTest {
     @Test
     void testAddFamily() {
         testChar.addFamily(extra);
-        assertEquals(extra, testChar.getFamily().getGroup().get(0));
+        assertEquals("Bob", testChar.getFamily().get(0));
     }
 
     @Test
-    void testIsRelated() {
+    void testAddFamilySameMember() {
         testChar.addFamily(extra);
-        assertTrue(testChar.isRelated(extra));
-        assertFalse(testChar.isRelated(new Character("Billy")));
+        testChar.addFamily(extra);
+        assertEquals("Bob", testChar.getFamily().get(0));
+        assertEquals(1, testChar.getFamily().size());
     }
+
+    // @Test
+    // // void testIsRelated() {
+    // //     testChar.addFamily(extra);
+    // //     assertTrue(testChar.isRelated(extra));
+    // //     assertFalse(testChar.isRelated(new Character("Billy")));
+    // // }
 
     @Test
     void testListFamilyMembers() {
