@@ -1,8 +1,12 @@
 package model;
 
+import org.json.JSONObject;
+
+import persistence.Writable;
+
 // Represents a character with a name, age, gender, biography and bookmark
 // status.
-public class Character {
+public class Character implements Writable{
     private String name;
     private String gender;
     private String bio;
@@ -19,7 +23,14 @@ public class Character {
         bio = "";
         gender = "";
         bmark = false;
-        family = new CharacterGroup("Family");
+        // family = new CharacterGroup("Family"); temprorarily removed
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        return json;
     }
 
     // EFFECTS: produces true if two characters are related

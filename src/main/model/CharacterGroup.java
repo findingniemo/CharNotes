@@ -3,8 +3,13 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import persistence.Writable;
+
 // Represents a character group (category/list) with a group name
-public class CharacterGroup {
+public class CharacterGroup implements Writable{
     private ArrayList<Character> charGroup;
     private String groupName;
 
@@ -12,6 +17,24 @@ public class CharacterGroup {
     public CharacterGroup(String groupName) {
         this.groupName = groupName;
         charGroup = new ArrayList<Character>();
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", groupName);
+        return json;
+    }
+
+     // EFFECTS: returns things in this workroom as a JSON array
+    private JSONArray thingiesToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Character c : charGroup) {
+            jsonArray.put(c.toJson());
+        }
+
+        return jsonArray;
     }
 
     // REQUIRES: characterNum >= 0 && newOrder >= 0 && list length >= 2

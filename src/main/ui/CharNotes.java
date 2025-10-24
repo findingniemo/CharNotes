@@ -5,6 +5,11 @@ import java.util.Scanner;
 import model.Character;
 import model.CharacterGroup;
 
+import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
+
+// References: https://github.students.cs.ubc.ca/CPSC210/TellerApp
+//             https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+
 public class CharNotes {
     CharacterGroup mainList;
     Scanner input;
@@ -198,5 +203,5 @@ public class CharNotes {
         System.out.println("\tOTHER OPTIONS TBA!");
         System.out.println("\tq -> quit");
     }
-
-} // This UI heavily references the TellerApp UI
+    
+}
