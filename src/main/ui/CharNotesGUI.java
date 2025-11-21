@@ -21,14 +21,19 @@ public class CharNotesGUI extends JFrame {
     private static final String JSON_STORE = "src\\data\\maingroup.json";
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
-    private JTextArea textArea;
+    private JPanel characters;
+    private JTextArea textField;
     private JButton newChar;
     private JButton save;
     private JButton load;
 
+    // EFFECTS: runs the CharNotes GUI
     public CharNotesGUI() throws FileNotFoundException{
         super("CharNotes");
         setSize(WIDTH, HEIGHT);
+        JPanel p = new JPanel();
+        p.setLayout(new BoxLayout(p, BoxLayout.Y_AXIS));
+        setContentPane(p);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         mainGroup = new CharacterGroup("General List");
@@ -39,22 +44,29 @@ public class CharNotesGUI extends JFrame {
         add(newChar);
 
         JPanel buttonRow = formatRow(newChar);
+        buttonRow.add(textField);
         buttonRow.add(save);
         buttonRow.add(load);
         buttonRow.setSize(WIDTH, HEIGHT / 6);
+        characters = new JPanel();
+        characters.setLayout(new BoxLayout(characters, BoxLayout.Y_AXIS));
 
+        p.add(buttonRow);
+        p.add(characters);
         setVisible(true);
-        this.add(buttonRow);
     }
 
+    // EFFECTS: initializes buttons and text box
     public void initButtons() {
         newChar = new JButton("Add New Character");
         save = new JButton("Save");
         load = new JButton("Load");
+        textField = new JTextArea(1, 15);
         
         newChar.addActionListener(e -> {
-            mainGroup.addToGroup(new Character(""));
-            System.out.println("Added character");
+            listCharacter(textField.getText());
+            textField.setText("");
+            System.out.println("Added character: " + textField.getText());
         });
 
         save.addActionListener(e -> {
@@ -63,6 +75,7 @@ public class CharNotesGUI extends JFrame {
 
         load.addActionListener(e -> {
             loadCharacterGroup();
+            addLoad();
         });
         
     }
@@ -90,14 +103,57 @@ public class CharNotesGUI extends JFrame {
         }
     }
 
+    // EFFECTS: adds the loaded characters to the gui
+    private void addLoad() {
+        characters.removeAll();
+        for(Character c : mainGroup.getGroup()) {
+        JPanel p = new JPanel();
+        JLabel label = new JLabel();
+        JLabel image = new JLabel(loadImage());
+
+        p.setLayout(new FlowLayout());
+        label.setText(c.getName());
+        p.add(image);
+        p.add(label);
+        p.add(deleteCharacter(p, c));
+        characters.add(p);
+        }
+        this.revalidate();
+    }
+
     //EFFECTS: returns the CharacterGroup controlled by this UI
     public CharacterGroup getCharacterGroup() {
         return mainGroup;
     }
 
-    public void listCharacter(Character c) {
-        JLabel label = new JLabel(c.getName());
-        add(label);
+    public void listCharacter(String name) {
+        Character c = new Character(name);
+        JPanel p = new JPanel();
+        JLabel label = new JLabel();
+        JLabel image = new JLabel(loadImage());
+
+        p.setLayout(new FlowLayout());
+        label.setText(name);
+        p.add(image);
+        p.add(label);
+        p.add(deleteCharacter(p, c));
+        mainGroup.addToGroup(c);
+        characters.add(p);
+
+        p.revalidate();
+    }
+
+    public JButton deleteCharacter(JPanel p, Character c) {
+        JButton del = new JButton("X");
+
+        del.addActionListener(e -> {
+            characters.remove(p);
+            mainGroup.getGroup().remove(c);
+            System.out.println("Removed: " + textField.getText());
+            revalidate();
+        });
+
+        return del;
     }
 
     //EFFECTS: creates and returns row with button included
@@ -108,5 +164,10 @@ public class CharNotesGUI extends JFrame {
 
         return p;
     }
+
+    private ImageIcon loadImage() {
+		String sep = System.getProperty("file.separator");
+		return new ImageIcon(System.getProperty("user.dir") + sep + "lib" + sep + "icon.png");
+	}
 
 }
