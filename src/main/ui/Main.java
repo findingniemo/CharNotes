@@ -11,6 +11,7 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Welcome to CharNotes!");
         try {
+            new CharNotesGUI();
             new CharNotes();
         } catch (FileNotFoundException e) {
             System.out.println("Unable to run application: file not found");
