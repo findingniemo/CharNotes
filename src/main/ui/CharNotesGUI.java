@@ -10,7 +10,9 @@ import model.*;
 import model.Character;
 import persistence.JsonReader;
 import persistence.JsonWriter;
+import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
 
+@ExcludeFromJacocoGeneratedReport
 public class CharNotesGUI extends JFrame {
     public static final int MAIN_TAB_INDEX = 0;
     public static final int CHARACTER_PAGE_TAB_INDEX = 1;
@@ -172,7 +174,7 @@ public class CharNotesGUI extends JFrame {
     // EFFECTS: loads image from lib and returns it
     private ImageIcon loadImage() {
 		String sep = System.getProperty("file.separator");
-		return new ImageIcon(System.getProperty("user.dir") + sep + "lib" + sep + "icon.png");
+		return new ImageIcon(System.getProperty("user.dir") + sep + "images" + sep + "icon.png");
 	}
 
 }
