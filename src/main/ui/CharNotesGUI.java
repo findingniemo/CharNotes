@@ -12,6 +12,7 @@ import persistence.JsonReader;
 import persistence.JsonWriter;
 import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
 
+// Graphic User Interface for CharNotes
 @ExcludeFromJacocoGeneratedReport
 public class CharNotesGUI extends JFrame {
     public static final int MAIN_TAB_INDEX = 0;
@@ -21,19 +22,24 @@ public class CharNotesGUI extends JFrame {
     public static final int HEIGHT = 600;
     private CharacterGroup mainGroup;
     private static final String JSON_STORE = "src\\data\\maingroup.json";
+    private JPanel currentPage;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
     private JPanel characters;
+    private JPanel pages;
     private JTextArea textField;
     private JButton newChar;
     private JButton save;
     private JButton load;
 
     // EFFECTS: runs the CharNotes GUI
-    public CharNotesGUI() throws FileNotFoundException{
+    public CharNotesGUI() throws FileNotFoundException {
         super("CharNotes");
         setSize(WIDTH, HEIGHT);
         JPanel p = new JPanel();
+        JPanel characterSide = new JPanel();
+        characterSide.setLayout(new GridLayout(1, 2));
+        pages = new JPanel();
         p.setLayout(new BoxLayout(p, BoxLayout.Y_AXIS));
         setContentPane(p);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -42,6 +48,15 @@ public class CharNotesGUI extends JFrame {
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
 
+        p.add(order());
+        p.add(characterSide);
+        characterSide.add(characters);
+        characterSide.add(pages);
+        setVisible(true);
+    }
+
+    // EFFECTS: initializes buttons & orders the panels
+    public JPanel order() {
         initButtons();
         add(newChar);
 
@@ -53,9 +68,7 @@ public class CharNotesGUI extends JFrame {
         characters = new JPanel();
         characters.setLayout(new BoxLayout(characters, BoxLayout.Y_AXIS));
 
-        p.add(buttonRow);
-        p.add(characters);
-        setVisible(true);
+        return buttonRow;
     }
 
     // EFFECTS: initializes buttons and text box
@@ -64,7 +77,7 @@ public class CharNotesGUI extends JFrame {
         save = new JButton("Save");
         load = new JButton("Load");
         textField = new JTextArea(1, 15);
-        
+
         newChar.addActionListener(e -> {
             listCharacter(textField.getText());
             System.out.println("Added character: " + textField.getText());
@@ -79,7 +92,7 @@ public class CharNotesGUI extends JFrame {
             loadCharacterGroup();
             addLoad();
         });
-        
+
     }
 
     // EFFECTS: saves character group to file
@@ -106,20 +119,21 @@ public class CharNotesGUI extends JFrame {
     }
 
     // MODIFIES: this
-    // EFFECTS: adds the loaded characters to the gui
+    // EFFECTS: adds the loaded characters to the gui and removes unsaved characters
     private void addLoad() {
         characters.removeAll();
-        for(Character c : mainGroup.getGroup()) {
-        JPanel p = new JPanel();
-        JLabel label = new JLabel();
-        JLabel image = new JLabel(loadImage());
+        for (Character c : mainGroup.getGroup()) {
+            JPanel p = new JPanel();
+            JLabel label = new JLabel();
+            JLabel image = new JLabel(loadImage());
 
-        p.setLayout(new FlowLayout());
-        label.setText(c.getName());
-        p.add(image);
-        p.add(label);
-        p.add(deleteCharacter(p, c));
-        characters.add(p);
+            p.setLayout(new FlowLayout());
+            label.setText(c.getName());
+            p.add(image);
+            p.add(label);
+            p.add(viewCharacter(c));
+            p.add(deleteCharacter(p, c));
+            characters.add(p);
         }
         this.revalidate();
     }
@@ -141,6 +155,7 @@ public class CharNotesGUI extends JFrame {
         label.setText(name);
         p.add(image);
         p.add(label);
+        p.add(viewCharacter(c));
         p.add(deleteCharacter(p, c));
         mainGroup.addToGroup(c);
         characters.add(p);
@@ -162,6 +177,25 @@ public class CharNotesGUI extends JFrame {
         return del;
     }
 
+    // MODIFIES: this
+    // EFFECTS: opens new panel with character details
+    public JButton viewCharacter(Character c) {
+        JButton view = new JButton("View");
+
+        view.addActionListener(e -> {
+            JPanel charPage = new CharacterPage(this, c);
+            if (currentPage != null) {
+                pages.remove(currentPage);
+            }
+            currentPage = charPage;
+            pages.add(charPage);
+            System.out.println("Viewing " + c.getName());
+            revalidate();
+        });
+
+        return view;
+    }
+
     // EFFECTS: creates and returns row with button included
     public JPanel formatRow(JButton b) {
         JPanel p = new JPanel();
@@ -171,10 +205,10 @@ public class CharNotesGUI extends JFrame {
         return p;
     }
 
-    // EFFECTS: loads image from lib and returns it
-    private ImageIcon loadImage() {
-		String sep = System.getProperty("file.separator");
-		return new ImageIcon(System.getProperty("user.dir") + sep + "images" + sep + "icon.png");
-	}
+    // EFFECTS: loads image from images and returns it
+    public ImageIcon loadImage() {
+        String sep = System.getProperty("file.separator");
+        return new ImageIcon(System.getProperty("user.dir") + sep + "images" + sep + "icon.png");
+    }
 
 }

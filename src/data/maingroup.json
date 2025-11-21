@@ -1,4 +1,26 @@
 {
-    "characters": [],
+    "characters": [
+        {
+            "gender": "man",
+            "name": "Bob",
+            "bio": "Can we fix it?",
+            "family": [],
+            "age": 32
+        },
+        {
+            "gender": "man",
+            "name": "Jake",
+            "bio": "A yellow dog",
+            "family": [],
+            "age": 24
+        },
+        {
+            "gender": "woman",
+            "name": "Margo",
+            "bio": "nice hair",
+            "family": [],
+            "age": 54
+        }
+    ],
     "name": "General List"
 }
