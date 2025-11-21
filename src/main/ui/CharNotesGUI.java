@@ -65,8 +65,8 @@ public class CharNotesGUI extends JFrame {
         
         newChar.addActionListener(e -> {
             listCharacter(textField.getText());
-            textField.setText("");
             System.out.println("Added character: " + textField.getText());
+            textField.setText("");
         });
 
         save.addActionListener(e -> {
@@ -103,6 +103,7 @@ public class CharNotesGUI extends JFrame {
         }
     }
 
+    // MODIFIES: this
     // EFFECTS: adds the loaded characters to the gui
     private void addLoad() {
         characters.removeAll();
@@ -121,11 +122,13 @@ public class CharNotesGUI extends JFrame {
         this.revalidate();
     }
 
-    //EFFECTS: returns the CharacterGroup controlled by this UI
+    // EFFECTS: returns the CharacterGroup controlled by this UI
     public CharacterGroup getCharacterGroup() {
         return mainGroup;
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates new Character and a panel for it
     public void listCharacter(String name) {
         Character c = new Character(name);
         JPanel p = new JPanel();
@@ -143,20 +146,21 @@ public class CharNotesGUI extends JFrame {
         p.revalidate();
     }
 
+    // EFFECTS: creates a delete button for Character c and returns it
     public JButton deleteCharacter(JPanel p, Character c) {
         JButton del = new JButton("X");
 
         del.addActionListener(e -> {
             characters.remove(p);
             mainGroup.getGroup().remove(c);
-            System.out.println("Removed: " + textField.getText());
+            System.out.println("Removed: " + c.getName());
             revalidate();
         });
 
         return del;
     }
 
-    //EFFECTS: creates and returns row with button included
+    // EFFECTS: creates and returns row with button included
     public JPanel formatRow(JButton b) {
         JPanel p = new JPanel();
         p.setLayout(new FlowLayout());
@@ -165,6 +169,7 @@ public class CharNotesGUI extends JFrame {
         return p;
     }
 
+    // EFFECTS: loads image from lib and returns it
     private ImageIcon loadImage() {
 		String sep = System.getProperty("file.separator");
 		return new ImageIcon(System.getProperty("user.dir") + sep + "lib" + sep + "icon.png");
