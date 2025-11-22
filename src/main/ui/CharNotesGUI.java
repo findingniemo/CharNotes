@@ -56,7 +56,7 @@ public class CharNotesGUI extends JFrame {
     }
 
     // EFFECTS: initializes buttons & orders the panels
-    public JPanel order() {
+    private JPanel order() {
         initButtons();
         add(newChar);
 
@@ -72,7 +72,7 @@ public class CharNotesGUI extends JFrame {
     }
 
     // EFFECTS: initializes buttons and text box
-    public void initButtons() {
+    private void initButtons() {
         newChar = new JButton("Add New Character");
         save = new JButton("Save");
         load = new JButton("Load");
@@ -120,7 +120,7 @@ public class CharNotesGUI extends JFrame {
 
     // MODIFIES: this
     // EFFECTS: adds the loaded characters to the gui and removes unsaved characters
-    private void addLoad() {
+    public void addLoad() {
         characters.removeAll();
         for (Character c : mainGroup.getGroup()) {
             JPanel p = new JPanel();

@@ -36,8 +36,15 @@ Of course, you might ask: "Why not use a regular noting app?". Regular note apps
 ## Instructions for End User
 - You can view the panel that displays the characters by simply launching the app. The characters will appear on the main screen as you add them
 - You can add characters to the general character list found on the main page by typing their name in the text box and clicking "Add New Character"
-- You can remove a character from the general character list found on the main page by clicking the "X" button next to the character you would like to remove 
-- You can view the details of a character in the main list by clicking the "View" button next to their name.
+- You can remove a character from the general character list found on the main page by clicking the "X" button next to the character you would like to remove
+- You can view the details of a character in the main list by clicking the "View" button next to their name. 
+- You can edit a character's information by using the text field on their character page with these commandsd and pressing "Submit Edit":
+  - n/"new name*
+  - a/*new age*
+  - g/*new gender*
+  - b/*new bio*
+
+  IMPORTANT: Don't add any spaces after the commands. The command format is eg. n/Mike. Also, the a/ command only accepts integers.
 - You can locate the visual component once you add a new character. A placeholder character icon will appear next to the character's name.
 - You can save the state of the application by pressing the "Save" button
 - You can reload the state of the application by pressing the "Load" button. 
