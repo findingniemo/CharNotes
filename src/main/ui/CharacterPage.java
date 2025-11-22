@@ -68,7 +68,6 @@ public class CharacterPage extends JPanel {
         panel.add(edit());
     }
 
-    // REQUIRES: age input cannot be a string
     // MODIFIES: this
     // EFFECTS: edits character information according to the given command
     public JButton edit() {
@@ -97,6 +96,7 @@ public class CharacterPage extends JPanel {
         return submit;
     }
 
+    // EFFECTS: returns closed
     public boolean getClosed() {
         return closed;
     }

@@ -55,7 +55,8 @@ public class CharNotesGUI extends JFrame {
         setVisible(true);
     }
 
-    // EFFECTS: initializes buttons & orders the panels
+    // MODIFIES: this
+    // EFFECTS: initializes buttons, adds them to panel & orders the panels
     private JPanel order() {
         initButtons();
         add(newChar);
