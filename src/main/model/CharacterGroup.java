@@ -7,7 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import persistence.Writable;
-
+ 
 // Represents a character group (category/list) with a group name
 public class CharacterGroup implements Writable {
     private ArrayList<Character> charGroup;

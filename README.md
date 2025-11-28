@@ -71,3 +71,10 @@ Removed character Mike
 Removed character Bob
 - Fri Nov 28 00:19:05 PST 2025
 Removed character Jill
+
+## "Phase 4: Task 3"
+- The first thing that comes to my mind is a really simple one: changing the character age field in model.Character class from int to String. There are multiple instances where we print/edit this variable and I have to convert Strings into ints and vice-versa. I also have to control the case when a a user DOES enter a String. The app currenly does not have a function that makes use of age values, and I'm not sure if it will ever have one, so keeping the age as a String makes programming easier. I suppose it also increases the readability and let's users have more freedom (eg. age : "infinitely old").
+- I can change the charGroup field in model.CharacterGroup class into a Map instead of an array list and overwrite equals and hashcode. All characters having their own ids might help me implement future methods for cases where there are multiple characters with the same name. 
+- Based on the UML diagram, there are way too many dependencies/associations. I would try to decrease that. If I change one thing in one class, I will have to change that thing in all the other classes, which is tedious and unefficient.
+  - I am not creating multiple instances of CharacterGroup in the current version of my app, therefore I can also change CharacterGroup so that it implements Iterable<Character>. That way, there will be less dependency/association with CharacterGroup. I can also use for loops directly on ChracterGroup that way.
+- If I decide to add different kinds of character groups (eg. recycle bin, categorized character groups), I can turn the CharacterGroup class into an abstract class. That would decrease method repetition in classes which extend it. 
