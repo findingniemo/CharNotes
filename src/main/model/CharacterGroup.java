@@ -28,7 +28,7 @@ public class CharacterGroup implements Writable {
         return json;
     }
 
-    // EFFECTS: returns things in this workroom as a JSON array
+    // EFFECTS: returns things in this character group as a JSON array
     private JSONArray charactersToJson() {
         JSONArray jsonArray = new JSONArray();
 
@@ -36,6 +36,7 @@ public class CharacterGroup implements Writable {
             jsonArray.put(c.toJson());
         }
 
+        EventLog.getInstance().logEvent(new Event("Loaded saved characters"));
         return jsonArray;
     }
 
@@ -61,6 +62,17 @@ public class CharacterGroup implements Writable {
     // adds a character to the group
     public void addToGroup(Character chara) {
         charGroup.add(chara);
+        EventLog.getInstance().logEvent(new Event("Added new character: " + chara.getName()));
+    }
+
+    // MODIFIES: this
+    // removes character from the group
+    public void removeFromGroup(Character chara) {
+        if (charGroup.contains(chara)) {
+            String n = chara.getName();
+            charGroup.remove(chara);
+            EventLog.getInstance().logEvent(new Event("Removed character " + n));
+        }
     }
 
     // REQUIRES: a non-empty list

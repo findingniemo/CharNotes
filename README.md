@@ -48,3 +48,26 @@ Of course, you might ask: "Why not use a regular noting app?". Regular note apps
 - You can locate the visual component once you add a new character. A placeholder character icon will appear next to the character's name.
 - You can save the state of the application by pressing the "Save" button
 - You can reload the state of the application by pressing the "Load" button. 
+
+## "Phase 4: Task 2"
+- Welcome to CharNotes!
+- Fri Nov 28 00:18:24 PST 2025
+Added new character: Jim
+- Fri Nov 28 00:18:32 PST 2025
+Changed Jim's name to: Bob
+- Fri Nov 28 00:18:35 PST 2025
+Changed Bob's age to: 7
+- Fri Nov 28 00:18:39 PST 2025
+Changed Bob's gender to m
+- Fri Nov 28 00:18:50 PST 2025
+Changed Bob's bio to placeholder
+- Fri Nov 28 00:18:55 PST 2025
+Added new character: Mike
+- Fri Nov 28 00:18:59 PST 2025
+Added new character: Jill
+- Fri Nov 28 00:19:01 PST 2025
+Removed character Mike
+- Fri Nov 28 00:19:04 PST 2025
+Removed character Bob
+- Fri Nov 28 00:19:05 PST 2025
+Removed character Jill

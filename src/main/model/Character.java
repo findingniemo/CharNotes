@@ -81,7 +81,9 @@ public class Character implements Writable {
     // MODIFIES: this
     // EFFECTS: sets character name to entered name
     public void setName(String name) {
+        String n = this.name;
         this.name = name;
+        EventLog.getInstance().logEvent(new Event("Changed " + n + "'s name to: " + name));
     }
 
     // REQUIRES: entered age >= 0
@@ -89,18 +91,21 @@ public class Character implements Writable {
     // EFFECTS: sets character age to entered age
     public void setAge(int age) {
         this.age = age;
+        EventLog.getInstance().logEvent(new Event("Changed " + this.name + "'s age to: " + Integer.toString(age)));
     }
 
     // MODIFIES: this
     // EFFECTS: sets character bio to entered bio
     public void setBio(String bio) {
         this.bio = bio;
+        EventLog.getInstance().logEvent(new Event("Changed " + this.name + "'s bio to " + bio));
     }
 
     // MODIFIES: this
     // EFFECTS: sets character gender to entered gender
     public void setGender(String gender) {
         this.gender = gender;
+        EventLog.getInstance().logEvent(new Event("Changed " + this.name + "'s gender to " + gender));
     }
 
     // MODIFIES: this

@@ -1,5 +1,6 @@
 package model;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
@@ -111,5 +112,25 @@ public class CharacterGroupTest {
         testGroup.addToGroup(bob);
         testGroup.addToGroup(mike);
         assertEquals("0    1   2    ", testGroup.listMemberNumbers());
+    }
+
+    @Test
+    void testRemoveFromGroup() {
+        testGroup.addToGroup(bill);
+        testGroup.addToGroup(bob);
+        testGroup.removeFromGroup(bill);
+        expectedList.add(bob);
+        assertEquals(expectedList, testGroup.getGroup());
+    }
+
+    @Test
+    void testRemoveFromGroupNoChar() {
+        testGroup.addToGroup(bill);
+        testGroup.addToGroup(bob);
+        testGroup.removeFromGroup(mike);
+        expectedList.add(bill);
+        expectedList.add(bob);
+        assertEquals(expectedList, testGroup.getGroup());
+        assertFalse(testGroup.getGroup().contains(mike));
     }
 }

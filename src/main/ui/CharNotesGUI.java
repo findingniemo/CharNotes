@@ -1,6 +1,8 @@
 package ui;
 
 import java.awt.*;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -8,13 +10,21 @@ import javax.swing.*;
 
 import model.*;
 import model.Character;
+import model.Event;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
 
+// References: https://github.students.cs.ubc.ca/CPSC210/TellerApp
+//             https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+//             https://github.students.cs.ubc.ca/CPSC210/LongFormProblemStarters
+//             https://github.students.cs.ubc.ca/CPSC210/C3-LectureLabStarter
+//             https://stackoverflow.com/questions/6578205/swing-jlabel-text-change-on-the-running-application
+//             https://github.students.cs.ubc.ca/CPSC210/AlarmSystem
+
 // Graphic User Interface for CharNotes
 @ExcludeFromJacocoGeneratedReport
-public class CharNotesGUI extends JFrame {
+public class CharNotesGUI extends JFrame implements WindowListener {
     public static final int MAIN_TAB_INDEX = 0;
     public static final int CHARACTER_PAGE_TAB_INDEX = 1;
 
@@ -53,6 +63,8 @@ public class CharNotesGUI extends JFrame {
         characterSide.add(characters);
         characterSide.add(pages);
         setVisible(true);
+
+        addWindowListener(this);
     }
 
     // MODIFIES: this
@@ -81,7 +93,6 @@ public class CharNotesGUI extends JFrame {
 
         newChar.addActionListener(e -> {
             listCharacter(textField.getText());
-            System.out.println("Added character: " + textField.getText());
             textField.setText("");
         });
 
@@ -102,7 +113,6 @@ public class CharNotesGUI extends JFrame {
             jsonWriter.open();
             jsonWriter.write(mainGroup);
             jsonWriter.close();
-            System.out.println("Saved " + mainGroup.getGroupName() + " to " + JSON_STORE);
         } catch (FileNotFoundException e) {
             System.out.println("Unable to write to file: " + JSON_STORE);
         }
@@ -113,7 +123,6 @@ public class CharNotesGUI extends JFrame {
     private void loadCharacterGroup() {
         try {
             mainGroup = jsonReader.read();
-            System.out.println("Loaded " + mainGroup.getGroupName() + " from " + JSON_STORE);
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);
         }
@@ -170,8 +179,7 @@ public class CharNotesGUI extends JFrame {
 
         del.addActionListener(e -> {
             characters.remove(p);
-            mainGroup.getGroup().remove(c);
-            System.out.println("Removed: " + c.getName());
+            mainGroup.removeFromGroup(c);
             revalidate();
         });
 
@@ -190,7 +198,6 @@ public class CharNotesGUI extends JFrame {
             }
             currentPage = charPage;
             pages.add(charPage);
-            System.out.println("Viewing " + c.getName());
             revalidate();
         });
 
@@ -210,6 +217,42 @@ public class CharNotesGUI extends JFrame {
     public ImageIcon loadImage() {
         String sep = System.getProperty("file.separator");
         return new ImageIcon(System.getProperty("user.dir") + sep + "images" + sep + "icon.png");
+    }
+
+    @Override
+    public void windowOpened(WindowEvent e) {
+        // Do nothing
+    }
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+        for (Event ev : EventLog.getInstance()) {
+            System.out.println(ev);
+        }
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+        // Do nothing
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+        // Do nothing
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+        // Do nothing
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
+        // Do nothing
     }
 
 }

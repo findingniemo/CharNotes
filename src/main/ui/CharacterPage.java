@@ -87,7 +87,6 @@ public class CharacterPage extends JPanel {
                 chara.setBio(input.substring(2));
             } 
 
-            System.out.println("Edited character: " + chara.getName());
             textArea.setText("");
             panel.removeAll();
             init(chara);
